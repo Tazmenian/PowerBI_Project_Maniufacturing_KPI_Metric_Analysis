@@ -1,0 +1,42 @@
+from faker import Faker
+import pandas as pd
+
+fake = Faker()
+
+def generate_custom_lot_id():
+    # Generate two uppercase letters
+    letters = fake.random_uppercase_letter() + fake.random_uppercase_letter()
+    # Generate three random digits
+    digits = fake.random_number(digits=3)
+    return f"{letters}{digits}"
+
+machine_numbers = ['M001', 'M002', 'M003', 'M004', 'M005']
+
+def generate_random_machine_number():
+    return fake.random_element(machine_numbers)
+
+# Generate data
+num_rows = 500  # Adjust as needed
+data = {
+    'Name': [fake.first_name() for _ in range(num_rows)],
+    'Date': [fake.date_this_decade() for _ in range(num_rows)],
+    'Lot ID': [generate_custom_lot_id() for _ in range(num_rows)],
+    'Lot Quantity': [fake.random_int(min=9001, max=10001) for _ in range(num_rows)],
+    'Machine Number': [generate_random_machine_number() for _ in range(num_rows)],
+    'Contamination': [fake.random_int(min=0, max=100) for _ in range(num_rows)],
+    'Dent': [fake.random_int(min=0, max=100) for _ in range(num_rows)],
+    'Scratch': [fake.random_int(min=0, max=100) for _ in range(num_rows)],
+    'Discoloration': [fake.random_int(min=0, max=100) for _ in range(num_rows)],
+    'Delamination': [fake.random_int(min=0, max=100) for _ in range(num_rows)],
+    'Foreign Material': [fake.random_int(min=0, max=100) for _ in range(num_rows)],
+    'Voids': [fake.random_int(min=0, max=100) for _ in range(num_rows)]
+}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Save to CSV
+csv_file_path = 'fake_data.csv'
+df.to_csv(csv_file_path, index=False)
+
+print(f"CSV file '{csv_file_path}' has been created successfully.")
