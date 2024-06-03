@@ -1,6 +1,9 @@
 # Project Title
 Quantitative Analysis of Manufacturing KPI Metrics
 
+##Python Faker Library for Data Generation (Manufacturing Data Mitigation)
+![image](https://github.com/Tazmenian/PowerBI_Project_Maniufacturing_KPI_Metric_Analysis/assets/115995270/13ea7d7c-3240-489b-b8ec-053d05d049fd)
+
 ## Description
 This project involves analyzing production data to derive Key Performance Indicators (KPIs) that help assess and improve the quality and efficiency of the manufacturing process.
 
